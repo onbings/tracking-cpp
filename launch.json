@@ -1,0 +1,97 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Tracker (active preset, CUDA)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/${command:cmake.buildType}/tracker.exe",
+            "preLaunchTask": "deploy",
+            "args": [
+                "--line",
+                "0.5,0,0.5,1"
+            ],
+            "cwd": "${workspaceFolder}",
+            "environment": [
+                {
+                    "name": "CUDA_MODULE_LOADING",
+                    "value": "LAZY"
+                },
+                {
+                    "name": "PATH",
+                    "value": "${workspaceFolder}/third_party/cuda-runtime/bin;${env:PATH}"
+                }
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Tracker: record (Voronoi + outputs)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/${command:cmake.buildType}/tracker.exe",
+            "preLaunchTask": "deploy",
+            "args": [
+                "--voronoi",
+                "--line",
+                "0.5,0,0.5,1",
+                "--device",
+                "auto",
+                "--save",
+                "output/tracked.mp4",
+                "--tracks-csv",
+                "output/tracks.csv",
+                "--stats-json",
+                "output/stats.json",
+                "--perf-json",
+                "output/perf.json"
+            ],
+            "cwd": "${workspaceFolder}",
+            "environment": [
+                {
+                    "name": "CUDA_MODULE_LOADING",
+                    "value": "LAZY"
+                },
+                {
+                    "name": "PATH",
+                    "value": "${workspaceFolder}/third_party/cuda-runtime/bin;${env:PATH}"
+                }
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Tracker: headless benchmark",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/${command:cmake.buildType}/tracker.exe",
+            "preLaunchTask": "deploy",
+            "args": [
+                "--no-show",
+                "--stats-json",
+                "output/stats.json",
+                "--perf-json",
+                "output/perf.json"
+            ],
+            "cwd": "${workspaceFolder}",
+            "environment": [
+                {
+                    "name": "CUDA_MODULE_LOADING",
+                    "value": "LAZY"
+                },
+                {
+                    "name": "PATH",
+                    "value": "${workspaceFolder}/third_party/cuda-runtime/bin;${env:PATH}"
+                }
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Unit tests",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/${command:cmake.buildType}/tracker_tests.exe",
+            "preLaunchTask": "build",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        }
+    ]
+}
