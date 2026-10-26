@@ -1,0 +1,7 @@
+onnxruntime-gpu-bin provides CMake targets:
+
+    find_package(onnxruntime-gpu-bin CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE onnxruntime::onnxruntime)
+
+Copy ${ONNXRUNTIME_RUNTIME_DLLS} next to your executable (the CUDA provider DLL is loaded at
+runtime). The CUDA 12.8+ / cuDNN 9 runtime DLLs must be on PATH for the CUDA execution provider.

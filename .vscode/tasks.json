@@ -1,0 +1,67 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "fetch CUDA runtime",
+            "type": "shell",
+            "command": "powershell -ExecutionPolicy Bypass -File tools/fetch_cuda_runtime.ps1",
+            "problemMatcher": []
+        },
+        {
+            "label": "export models",
+            "type": "shell",
+            "command": "C:/pro/tracking/.venv/Scripts/python.exe tools/export_models.py",
+            "problemMatcher": []
+        },
+        {
+            "label": "configure",
+            "type": "shell",
+            "command": "cmake --preset default",
+            "problemMatcher": []
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "call \"C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 && cmake --build build --config ${command:cmake.buildType}",
+            "options": {
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": [
+                        "/d",
+                        "/c"
+                    ]
+                }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "deploy",
+            "type": "shell",
+            "command": "call \"C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 && cmake --build build --config ${command:cmake.buildType} --target tracker",
+            "options": {
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": [
+                        "/d",
+                        "/c"
+                    ]
+                }
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "test",
+            "type": "shell",
+            "command": "ctest --test-dir build -C ${command:cmake.buildType} --output-on-failure",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}

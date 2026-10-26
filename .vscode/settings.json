@@ -1,0 +1,12 @@
+{
+    "cmake.configurePreset": "default",
+    "cmake.buildPreset": "release",
+    "cmake.testPreset": "release",
+    "C_Cpp.default.cppStandard": "c++20",
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "files.associations": {
+        "*.hpp": "cpp",
+        "format": "cpp",
+        "span": "cpp"
+    }
+}

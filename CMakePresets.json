@@ -1,0 +1,29 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": { "major": 3, "minor": 25, "patch": 0 },
+  "configurePresets": [
+    {
+      "name": "default",
+      "displayName": "x64 (vcpkg manifest)",
+      "generator": "Ninja Multi-Config",
+      "binaryDir": "${sourceDir}/build",
+      "toolchainFile": "C:/pro/vcpkg/scripts/buildsystems/vcpkg.cmake",
+      "cacheVariables": {
+        "VCPKG_TARGET_TRIPLET": "x64-windows",
+        "VCPKG_MANIFEST_FEATURES": "tests"
+      },
+      "environment": {
+        "VCPKG_OVERLAY_PORTS": "${sourceDir}/vcpkg-ports",
+        "VCPKG_VISUAL_STUDIO_PATH": "C:/Program Files/Microsoft Visual Studio/2022/Professional",
+        "VCPKG_PLATFORM_TOOLSET": "v143"
+      }
+    }
+  ],
+  "buildPresets": [
+    { "name": "release", "configurePreset": "default", "configuration": "Release" },
+    { "name": "debug", "configurePreset": "default", "configuration": "Debug" }
+  ],
+  "testPresets": [
+    { "name": "release", "configurePreset": "default", "configuration": "Release", "output": { "outputOnFailure": true } }
+  ]
+}

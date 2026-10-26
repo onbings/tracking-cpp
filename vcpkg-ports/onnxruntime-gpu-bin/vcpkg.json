@@ -1,0 +1,8 @@
+{
+  "name": "onnxruntime-gpu-bin",
+  "version": "1.31.0",
+  "description": "Official prebuilt ONNX Runtime for Windows x64 with the CUDA 12 execution provider (CPU EP included). Avoids building ONNX Runtime from source and needs no CUDA toolkit; the CUDA/cuDNN runtime DLLs are provided separately (tools/fetch_cuda_runtime.ps1).",
+  "homepage": "https://github.com/microsoft/onnxruntime",
+  "license": "MIT",
+  "supports": "windows & x64 & !uwp & !static"
+}

@@ -1,0 +1,8 @@
+build/
+output/
+third_party/downloads/
+third_party/wheels/
+third_party/cuda-runtime/
+models/*.onnx
+*.user
+.cache/
